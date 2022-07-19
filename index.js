@@ -1,8 +1,4 @@
 const numberOfFilms = +prompt("How many films have you watched?", '');
-const a = prompt("Wwhat was your last film?", '');
-const b = +prompt("How can you rate the film?");
-const c = prompt("Wwhat was your last film?", '');
-const d = +prompt("How can you rate the film?");
 
 const personalMovieDB = {
     count: numberOfFilms,
@@ -11,9 +7,28 @@ const personalMovieDB = {
     genres: [],
     privat: false
 };
+//automate questions for visitor
+for (let i = 0; i < 2; i++) {
+    const a = prompt("What was your last film?", '');
+    const b = +prompt("How can you rate the film?");
+    
+    if (a != null && b != null && a.length < 50) {
+        personalMovieDB.movies[a] = b;
+    }else{
+        i--;
+    }
+}
 
-personalMovieDB.movies[a] = b;
-personalMovieDB.movies[c] = d;
+//feedback info
+if (personalMovieDB.count < 10) {
+    alert('you don`t like films');
+}else if(personalMovieDB.count < 30){
+    alert('you sometimes watch films');
+}else if(personalMovieDB.count > 30){
+    alert('you are film maniac');
+}else{
+    alert('ERROR');
+}
 
 
 console.log(personalMovieDB);
